@@ -5,6 +5,8 @@ import { AppRegistry,
   StyleSheet,
   TouchableHighlight } from 'react-native';
 
+import formatTime from 'minutes-seconds-milliseconds';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -18,6 +20,8 @@ const styles = StyleSheet.create({
   },
   timerWrapper: {
     flex: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonWrapper: {
     flex: 3,
@@ -29,8 +33,22 @@ const styles = StyleSheet.create({
 });
 
 class Stopwatch extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeElasped: null,
+    };
+    this.onStartPress = this.onStartPress.bind(this);
+  }
+
   onStartPress() {
-    console.log('Start was pressed');
+    const startTime = new Date();
+
+    setInterval(() => {
+      this.setState({
+        timeElasped: new Date() - startTime,
+      });
+    }, 30);
   }
 
   onLapPress() {
@@ -75,7 +93,7 @@ class Stopwatch extends Component {
       <View style={styles.container}>
         <View style={[styles.header, this.border('#f0e68c')]}>
           <View style={[this.border('#b22222'), styles.timerWrapper]}>
-            <Text>00.00.00</Text>
+            <Text>{formatTime(this.state.timeElasped)}</Text>
           </View>
           <View style={[this.border('#8fbc8f'), styles.buttonWrapper]}>
             {this.startButton()}
