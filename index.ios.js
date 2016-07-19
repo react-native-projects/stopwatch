@@ -20,7 +20,9 @@ class Stopwatch extends Component {
     this.onLapPress = this.onLapPress.bind(this);
   }
 
+  // pressing start/stop button
   onStartPress() {
+    // check if clock is running, then stop
     if (this.state.timerRunning) {
       clearInterval(this.interval);
       this.setState({
@@ -41,7 +43,17 @@ class Stopwatch extends Component {
     }, 30);
   }
 
+  // pressing lap/restart button
   onLapPress() {
+    // Reset timer
+    if (!this.state.timerRunning) {
+      this.setState({
+        timeElasped: new Date(),
+        laps: [],
+      });
+      return;
+    }
+
     const lap = this.state.timeElasped;
 
     this.setState({
@@ -50,6 +62,7 @@ class Stopwatch extends Component {
     });
   }
 
+  // create laps list
   createLaps() {
     return this.state.laps.map((time, idx) => (
       <View key={idx} style={styles.lap}>
@@ -60,6 +73,7 @@ class Stopwatch extends Component {
     ));
   }
 
+  // create start/stop buttons
   startStopButton() {
     const style = this.state.timerRunning ? styles.stopButton : styles.startButton;
 
@@ -76,6 +90,7 @@ class Stopwatch extends Component {
     );
   }
 
+  // create the lap button
   lapButton() {
     return (
       <TouchableHighlight
@@ -84,7 +99,7 @@ class Stopwatch extends Component {
         style={styles.button}
       >
         <Text>
-          Lap
+          {this.state.timerRunning ? 'Lap' : 'Reset'}
         </Text>
       </TouchableHighlight>
     );

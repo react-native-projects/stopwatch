@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
+    backgroundColor: '#dcdcdc',
   },
   timerWrapper: {
     flex: 5,
@@ -24,6 +25,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    backgroundColor: '#dcdcdc',
   },
   button: {
     borderWidth: 2,
@@ -42,8 +44,11 @@ export const styles = StyleSheet.create({
   lap: {
     justifyContent: 'space-around',
     flexDirection: 'row',
+    borderBottomWidth: 1,
+    padding: 10,
+    borderColor: '#f0f8ff',
   },
   lapText: {
-    fontSize: 30,
+    fontSize: 20,
   },
 });
