@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry,
   Text,
   View,
+  ScrollView,
   TouchableHighlight } from 'react-native';
 import formatTime from 'minutes-seconds-milliseconds';
 
@@ -119,9 +120,9 @@ class Stopwatch extends Component {
           </View>
         </View>
 
-        <View style={styles.footer}>
+        <ScrollView style={styles.footer}>
           {this.createLaps()}
-        </View>
+        </ScrollView>
       </View>
     );
   }
