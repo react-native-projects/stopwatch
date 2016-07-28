@@ -1,5 +1,5 @@
 # react-native-stopwatch
-Basic stop watch app with react native
+Basic stop watch app with react native [![Build Status](https://travis-ci.org/react-native-projects/stopwatch.svg?branch=master)](https://travis-ci.org/react-native-projects/stopwatch)
 
 Running the app,
 ```
